@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>King County</origin>
+				<pubdate>20050908</pubdate>
+				<title>King County School Sites</title>
+				<edition>One</edition>
+				<geoform Sync="TRUE">vector digital data</geoform>
+				<pubinfo>
+					<pubplace>King County, WA</pubplace>
+					<publish>King County</publish>
+				</pubinfo>
+				<othercit>None</othercit>
+				<onlink Sync="TRUE">\\CSDE-FS1\Transfer\MW360\School Sites\schsite</onlink>
+			</citeinfo>
+		</citation>
+		<descript>
+			<abstract>King County School Sites and School Related Facilities</abstract>
+			<purpose>Parcel-based centroid for school facility. No footprint or infrastructure extent provided. Attributes assign parcel and street identifiers for location information.</purpose>
+			<supplinf>None</supplinf>
+		</descript>
+		<timeperd>
+			<timeinfo>
+				<sngdate>
+					<caldate>2005</caldate>
+				</sngdate>
+			</timeinfo>
+			<current>publication date</current>
+		</timeperd>
+		<status>
+			<progress>Complete</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc Sync="TRUE">-122.470616</westbc>
+				<eastbc Sync="TRUE">-121.357186</eastbc>
+				<northbc Sync="TRUE">47.783611</northbc>
+				<southbc Sync="TRUE">47.180094</southbc>
+			</bounding>
+		</spdom>
+		<keywords>
+			<theme>
+				<themekt>Not applicable</themekt>
+				<themekey>admin</themekey>
+				<themekey>school</themekey>
+				<themekey>none</themekey>
+			</theme>
+			<place>
+				<placekt>Not applicable</placekt>
+				<placekey>King County, WA</placekey>
+				<placekey>Pacific NW</placekey>
+				<placekey>Washington state</placekey>
+			</place>
+		</keywords>
+		<accconst>None</accconst>
+		<useconst>King County data are made available with the understanding that they shall be used exclusively by the obtainer or his/her authorized agents. Digital products may not be reproduced or redistributed in any form or by any means without the express written authorization of King County.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntperp>
+					<cntper>Chris Jansen</cntper>
+					<cntorg>King County GIS Center</cntorg>
+				</cntperp>
+				<cntpos>Client Services Production Coordinator</cntpos>
+				<cntaddr>
+					<addrtype>Mailing and physical address</addrtype>
+					<address>201 S Jackson St, Suite 700</address>
+					<city>Seattle</city>
+					<state>WA</state>
+					<postal>98104</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>206-263-4866</cntvoice>
+			</cntinfo>
+		</ptcontac>
+		<browse>
+			<browsen>http://www.metrokc.gov/gis/sdc/content/internal/images/schsite.jpg</browsen>
+			<browsed>JPG File of layer overlain on base of WA counties or local cities</browsed>
+			<browset>JPG</browset>
+		</browse>
+		<native Sync="TRUE">Microsoft Windows XP Version 5.1 (Build 2600) Service Pack 2; ESRI ArcCatalog 9.1.0.780</native>
+	</idinfo>
+	<dataqual>
+		<attracc>
+			<attraccr>Data updated using school district websites.</attraccr>
+		</attracc>
+		<logic>Generally one point for each named school</logic>
+		<complete>Contains schools for all public school districts within King County, as well as private schools and colleges.  Point features also represent closed schools or school owned properties - this data is less complete than the existing schools.</complete>
+		<posacc>
+			<horizpa>
+				<horizpar>Points aligned to school buildings using digital air photography (where possible).</horizpar>
+			</horizpa>
+		</posacc>
+		<lineage>
+			<procstep>
+				<procdesc>Original data geocoded using school addresses against street network</procdesc>
+				<procdate>19940101</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Points aligned to correct parcel and / or correct location using air photography</procdesc>
+				<procdate>20031101</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Updated with latest information as of December 2005, reflecting new schools, school closures and school changes (for public elementary and secondary schools only).</procdesc>
+				<procdate>20051219</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Changed schema (item names) as follows:  1. CLASS to SCH_CLASS, 2. PREFIX to DIR_PREFIX,  3. STREET to ST_NAME, 4. SUFFIX to DIR_SUFFIX, 5. SOURCE to DAT_SOURCE</procdesc>
+				<procdate>20051227</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Item DDES_ID and OLDTYPE dropped</procdesc>
+				<procdate>200610</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Create new lookup table from SCHSITEPAT_LXT called SCHSITE_TYPE. Contains only items SCH_CLASS (small integer 5) and CLASS_DESC (text 50). Values from old items CLASS and DESC calculated to new items, respectively. Items OLDTYPE, SYMBOL and DUP are not carried forward from old lookup table to new table. Finally in new table, remove all records other than where CLASS (now SCH_CLASS) is 1:9.</procdesc>
+				<procdate>200610</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>Rename current MAINT.GISC.PointsInterest.SCHSITE_POINT feature class to MAINT.GISC.PointsInterest.SCHSITE_MAST.</procdesc>
+				<procdate>200610</procdate>
+			</procstep>
+			<procstep>
+				<procdesc>
+Create python routine \\gisimages\image\pythonscripts\KCGISCenter\schsite.py that creates a join between feature class SCHSITE_MAST and table SCHSITE_TYPE. Join is performed on SCHSITE_MAST.CLASS to SCHSITE_TYPE.CLASS. CLASS_DESC item from SCHSITE_TYPE table is added to SCHSITE_MAST. SCHSITE_MAST is renamed to SCHSITE_POINT and posted from feature dataset MAINT.GISC.PointsInterestProcess.
+
+Any future updates to SCHSITE_MAST should be made against the version in MAINT.GISC.PointsInterest feature data set. After updates are completed, python script should be run to complete table managment. Reimport metadata from master and repost data to SDW.
+</procdesc>
+				<procdate>200610</procdate>
+			</procstep>
+			<procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">H:\gislabs\lab5data\King_schsite\schsite</srcused><date Sync="TRUE">20080904</date><time Sync="TRUE">13130000</time></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct Sync="TRUE">Vector</direct>
+		<ptvctinf>
+			<sdtsterm Name="maint.GISC.schsite_point">
+				<sdtstype Sync="TRUE">Entity point</sdtstype>
+				<ptvctcnt Sync="TRUE">646</ptvctcnt>
+			</sdtsterm>
+		</ptvctinf>
+	</spdoinfo>
+	<spref>
+		<horizsys>
+			<planar>
+				<mapproj>
+					<mapprojn Sync="TRUE">Lambert Conformal Conic</mapprojn>
+					<lambertc>
+						<stdparll Sync="TRUE">47.500000</stdparll>
+						<stdparll Sync="TRUE">48.733333</stdparll>
+						<longcm Sync="TRUE">-120.833333</longcm>
+						<latprjo Sync="TRUE">47.000000</latprjo>
+						<feast Sync="TRUE">1640416.666667</feast>
+						<fnorth Sync="TRUE">0.000000</fnorth>
+					</lambertc>
+				</mapproj>
+				<planci>
+					<plance Sync="TRUE">coordinate pair</plance>
+					<coordrep>
+						<absres Sync="TRUE">0.001000</absres>
+						<ordres Sync="TRUE">0.001000</ordres>
+					</coordrep>
+					<plandu Sync="TRUE">survey feet</plandu>
+				</planci>
+			</planar>
+			<geodetic>
+				<horizdn Sync="TRUE">D_North_American_1983_HARN</horizdn>
+				<ellips Sync="TRUE">Geodetic Reference System 80</ellips>
+				<semiaxis Sync="TRUE">6378137.000000</semiaxis>
+				<denflat Sync="TRUE">298.257222</denflat>
+			</geodetic>
+		</horizsys>
+		<vertdef>
+			<altsys>
+				<altdatum>North American Vertical Datum of 1988</altdatum>
+				<altres Sync="TRUE">1.000000</altres>
+				<altunits>feet</altunits>
+				<altenc Sync="TRUE">Explicit elevation coordinate included with horizontal coordinates</altenc>
+			</altsys>
+		</vertdef>
+	</spref>
+	<eainfo>
+		<detailed Name="maint.GISC.schsite_point">
+			<enttyp>
+				<enttypl>maint.GISC.schsite_point</enttypl>
+				<enttypd>Point feature attribute table</enttypd>
+				<enttypds>ESRI</enttypds>
+			</enttyp>
+			<attr>
+				<attrlabl Sync="TRUE">OBJECTID</attrlabl>
+				<attrdef Sync="TRUE">Internal feature number.</attrdef>
+				<attrdefs Sync="TRUE">ESRI</attrdefs>
+				<attrdomv>
+					<udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>SCH_CLASS</attrlabl>
+				<attrdef>Broad classification of school by grade levels</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<edom>
+						<edomv>1</edomv>
+						<edomvd>Elementary School</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>2</edomv>
+						<edomvd>Middle/JrHigh School</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>3</edomv>
+						<edomvd>High School</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>4</edomv>
+						<edomvd>College/University</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>5</edomv>
+						<edomvd>Alternative School</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>6</edomv>
+						<edomvd>Other Facility</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>7</edomv>
+						<edomvd>K-12 School</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>8</edomv>
+						<edomvd>Vacant Property</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+					<edom>
+						<edomv>9</edomv>
+						<edomvd>Private School</edomvd>
+						<edomvds>King County</edomvds>
+					</edom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>FACILITY</attrlabl>
+				<attrdef>Name of school</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Full name of school facility, e.g., JOHN MUIR ELEMENTARY</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>DISTRICT</attrlabl>
+				<attrdef>Name of school district</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Full school district name, uppercase, i.e., SEATTLE, NORTHSHORE</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>DISTNUM</attrlabl>
+				<attrdef>King County School District Number</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<rdom>
+						<rdommin>1.000</rdommin>
+						<rdommax>417.000</rdommax>
+						<attrunit>1</attrunit>
+						<attrmres>1</attrmres>
+					</rdom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>DAT_SOURCE</attrlabl>
+				<attrdef>Agency responsible for information</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Source of last change, sometimes with year</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>ST_NAME</attrlabl>
+				<attrdef>Street name</attrdef>
+				<attrdefs>King County</attrdefs>
+				<attrdomv>
+					<udom>Core name of street without street type or direction suffix, i.e., 28th, Simonds</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>DIR_PREFIX</attrlabl>
+				<attrdef>Directional prefix of street address of school site</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Street direction prefix, such as NE, SE, E, N, etc.</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>ST_TYPE</attrlabl>
+				<attrdef>Street type of street address of school site</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Street type, such as AVE, DR, ST, PL</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>DIR_SUFFIX</attrlabl>
+				<attrdef>Directional suffix of street address of school type</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Street direction suffix, i.e., NE, SE, E, etc</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>CITY</attrlabl>
+				<attrdef>City address of school site</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>City name, full spelling, all uppercase</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>ZIPCODE</attrlabl>
+				<attrdef>Zipcode of school site</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Five digit zip code for school location</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>COMMENTS</attrlabl>
+				<attrdef>Notes</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>General comments, usually regarding edits and edit source</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">PARCEL_NO</attrlabl>
+				<attrdef>King County Assessor parcel number of school site</attrdef>
+				<attrdefs>King County Dept. of Assessments</attrdefs>
+				<attrdomv>
+					<udom>10-digit tax parcel number, combination of MAJOR and MINOR number as single string</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl>ADDRESS</attrlabl>
+				<attrdef>Street address (number) of school site</attrdef>
+				<attrdefs>King County GIS Center</attrdefs>
+				<attrdomv>
+					<udom>Numerical portion of street address</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">CLASS_DESC</attrlabl>
+				<attrdef>Type of school</attrdef>
+				<attrdefs>King County</attrdefs>
+				<attrdomv>
+					<udom>Expansion (look-up) value for SCH_CLASS identifier, i.e., Elementary School, Middle/Jr High School</udom>
+				</attrdomv>
+			</attr>
+			<attr>
+				<attrlabl Sync="TRUE">GISC_SS_SHAPE</attrlabl>
+				<attrdef>Feature geometry</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Coordinates defining the features</udom>
+				</attrdomv>
+			</attr>
+		</detailed>
+		<overview>
+			<eaover>Points for schools coded (generally) as Elementary, Middle, High School and College. Private schools undifferentiated.</eaover>
+			<eadetcit>King County GIS Center</eadetcit>
+		</overview>
+	</eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntperp>
+					<cntper>Cheryl Wilder</cntper>
+					<cntorg>KCGIS Center</cntorg>
+				</cntperp>
+				<cntpos>Data Sales Coordinator</cntpos>
+				<cntaddr>
+					<addrtype>Mailing and physical address</addrtype>
+					<address>201 S Jackson St, Suite 700</address>
+					<city>Seattle</city>
+					<state>WA</state>
+					<postal>98104</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>206-263-5220</cntvoice>
+			</cntinfo>
+		</distrib>
+		<resdesc>/plibrary2/admin/shapes/point/schsite.shp</resdesc>
+		<distliab>
+King County disclaims any warranty of use of any digital
+product or data beyond that for which it was designed.
+</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ESRI Shapefile</formname>
+					<transize Sync="TRUE">0.017</transize>
+				</digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>\\gisdw\kclib\plibrary2\admin\shapes\point\schsite.shp</networkr>
+							</networka>
+						</computer>
+					</onlinopt>
+					<offoptn>
+						<offmedia>Yes</offmedia>
+						<recfmt>CD or DVD Read-only media, if offline</recfmt>
+					</offoptn>
+				</digtopt>
+			</digform>
+			<fees>Contact KCGIS Client Services for the cost of reproduction - http://www.metrokc.gov/gis/services/index.htm</fees>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd Sync="TRUE">20061121</metd>
+		<metc>
+			<cntinfo>
+				<cntorgp>
+					<cntorg>King County GIS Center</cntorg>
+					<cntper>Gavin Gray</cntper>
+				</cntorgp>
+				<cntpos>GIS Analyst</cntpos>
+				<cntaddr>
+					<addrtype>Mailing and physical address</addrtype>
+					<address>201 S Jackson St, Suite 700</address>
+					<city>Seattle</city>
+					<state>WA</state>
+					<postal>98104</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>206-263-4493</cntvoice>
+				<cntemail>firstname.lastname@metrokc.gov</cntemail>
+			</cntinfo>
+		</metc>
+		<metstdn Sync="TRUE">FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv Sync="TRUE">FGDC-STD-001-1998</metstdv>
+		<mettc Sync="TRUE">local time</mettc>
+		<metextns>
+			<onlink Sync="TRUE">http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof Sync="TRUE">ESRI Metadata Profile</metprof>
+		</metextns>
+	</metainfo>
+	<Esri><MetaID>{04A2546B-2E75-485F-AB24-1C1FA2C92B21}</MetaID><CreaDate>20080904</CreaDate><CreaTime>13130000</CreaTime><SyncOnce>TRUE</SyncOnce></Esri><distInfo><distributor><distorTran><onLineSrc><linkage Sync="TRUE">file://\\CSDE-FS1\Transfer\MW360\School Sites\schsite</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc></distorTran></distributor></distInfo></metadata>
