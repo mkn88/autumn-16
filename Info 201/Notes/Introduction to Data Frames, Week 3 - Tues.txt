@@ -1,0 +1,24 @@
+Introduction to Data Frames
+Info 201 Week 3, Tuesday, Introduction to Data Frames
+
+Lists - Module 8
+
+	A 
+
+
+
+View(dataframename)
+
+
+max(salaries$raise)
+sum(salaries$got.raise)
+salaries[salaries$raise == max(salaries$raise),]
+
+
+data() view a list of datasets in RStudio
+
+data('Seatbelts') load a dataset, with or without quotes is ok
+Seatbelts view the dataset
+
+getwd() get working directory
+setwd('~/Documents/info-201/m8-dataframes/') set working directory

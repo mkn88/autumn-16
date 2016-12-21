@@ -1,0 +1,4 @@
+mean(flights$gane, na.rm = TRUE) there may be NA values. use this to negate the NA values so you can calculate the mean
+
+GROUP BY, then SUMMARIZE
+	pollution <- group_by(pollution, city) .................

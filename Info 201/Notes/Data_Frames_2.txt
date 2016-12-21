@@ -1,0 +1,23 @@
+Data Frames 2
+Info 201 Week 3, Thursday, Introduction to Data Frames
+
+read.csv('data/filename.csv')
+
+Pros of Vectors
+	quicker computations
+
+Select a value from a data frame
+
+	dataframe$age[1]
+
+Levels of Measurement
+	Nominal (labels), qualitative
+		-operations: = , =/=
+	Ordinal (ordered)
+	operations : all equality 
+
+
+
+is.vector(vectorname) : is it a vector?
+
+as.vector(vectorname) : make as a vector

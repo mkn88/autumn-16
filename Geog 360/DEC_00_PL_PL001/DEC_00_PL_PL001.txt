@@ -1,0 +1,11 @@
+PL001
+RACE [71]
+
+Universe: Total population
+
+NOTE: For information on confidentiality protection, nonsampling
+error, definitions, and count corrections see
+http://www.census.gov/prod/cen2000/doc/pl94-171.pdf
+
+
+
