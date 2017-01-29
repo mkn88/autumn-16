@@ -1,1 +1,1 @@
-# autumn-16
+# Courses from Autumn Quarter 2016
